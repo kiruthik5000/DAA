@@ -11,10 +11,8 @@ int main(){
     while(f <= l) {
         int mid = (f + l) / 2;
         if (arr[mid] == target) {
-            cout << "Found" << endl;
-            cout << mid ;
-            return 0;
         }
+        l = mid - 1;
         if (arr[mid] > target) f = mid + 1;
         if (arr[mid] < target) l = mid - 1;
     }

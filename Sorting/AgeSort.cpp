@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>  //3
 using namespace std;     //22 5.6
 struct Person           //20 6.13
-
 {                      // 30  5.9
     int age;
     float height;
