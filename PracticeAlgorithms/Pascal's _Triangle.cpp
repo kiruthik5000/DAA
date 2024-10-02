@@ -5,7 +5,6 @@ int main()
     cout << "Enter the number of Rows";
     int n;
     cin >> n;
-
     vector<vector<int>> pascal(n, vector<int>(n, 0));
 
     for (int i = 0; i < n; i++)
