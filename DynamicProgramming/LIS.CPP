@@ -7,12 +7,12 @@ int main() {
 
     vector<int> dp(a, 1);
 
-    for(int j=1; j<a; j++) {
-        for(int i=0; i<j; i++) {
-            if(arr[j] > arr[i]){ 
-                dp[j] = dp[i]+1;
+    for(int i=1; i<a; i++) {
+        for(int j=0; j<i; j++) {
+            if(arr[i] > arr[j]){
+                dp[i] = max(dp[i], dp[j]+1);
             }
-        } 
+        }
     }
-    cout << dp[a-1];
+    cout << *max_element(dp.begin(), dp.end());
 }
