@@ -13,9 +13,9 @@ int main() {
     for(int i=1; i<=n; i++) {
         for(int j=1; j<=i; j++) {
             if(str1[i-1] == str2[j-1]){
-                dp[i][j] = dp[i-1][j-1] + 1;
+                dp[i][j] = dp[i-1][j-1] + 1;  // if two char matches add prev diagonal val
             }else{
-                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1]); // else add max of adjacent val 
             }
         }
     }
