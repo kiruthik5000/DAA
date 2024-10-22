@@ -18,5 +18,5 @@ void printPrimes(int n) {
 }
 
 int main() {
-    printPrimes(102);
+    printPrimes(100);
 }
