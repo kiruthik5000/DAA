@@ -27,7 +27,7 @@ void PlaceQueen(vector<vector<char>>& board,int col, int n, int& cnt){
         cnt++;
         return ;
     }
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++){  // rows
         if(isSafe(board, i, col, n)){
             board[i][col] = 'Q';
         PlaceQueen(board, col+1, n, cnt);

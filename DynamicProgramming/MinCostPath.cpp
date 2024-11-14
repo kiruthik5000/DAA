@@ -8,6 +8,7 @@ int main() {
     for(int i=0; i<a; i++)
         for(int j=0; j<a; j++)
             cin >> mat[i][j];
+            
     for(int i=1; i<a; i++) {
         mat[i][0] += mat[i-1][0];
     }

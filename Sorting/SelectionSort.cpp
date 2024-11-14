@@ -18,5 +18,5 @@ int main(){
         swap(arr[i], arr[min]);
     }
 
-     for(int i=0;i<size;i++) cout<<arr[i]<<" ";
+     for(int i=0;i<size;i++) cout<<arr[i]<<" "  ;
 }

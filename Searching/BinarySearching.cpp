@@ -8,13 +8,19 @@ int main(){
 
     int f = 0, l = a - 1;
     int target; cin >> target;
+    int res = -1; 
     while(f <= l) {
         int mid = (f + l) / 2;
         if (arr[mid] == target) {
+            res = mid;
+            l = mid - 1;
         }
-        l = mid - 1;
-        if (arr[mid] > target) f = mid + 1;
-        if (arr[mid] < target) l = mid - 1;
+        if (arr[mid] < target) f = mid + 1;
+        if (arr[mid] > target) l = mid - 1;
     }
+    if(res == -1){
     cout << "Not found";
+    }else{
+        cout << res;
+    }
 }
