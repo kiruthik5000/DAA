@@ -63,7 +63,11 @@ int main()
     {
         for (int j = 0; j < n; j++)
         {
-            cin >> board[i][j];
+            int val; cin >> val;
+            if(val < 0 || val >9){
+                cout << "Invalid input";
+                return 0;
+            }
         }
     }
     if (solver(board))

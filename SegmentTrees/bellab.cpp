@@ -10,14 +10,14 @@ void bellmanFord(const vector<Edge>& arr,int n,int m,int source) {
     distance[source] = 0;
 
     for(int i=0;i<n-1;i++) {
-        for(const auto& edge : arr) {
+        for(auto edge : arr) {
             if(distance[edge.u] != INT_MAX && distance[edge.u] + edge.w < distance[edge.v]) {
                 distance[edge.v] = distance[edge.u] + edge.w;
             }
         }
     }
 
-    for(const auto& edge : arr) {
+    for(auto edge : arr) {
         if(distance[edge.u] != INT_MAX && distance[edge.u] + edge.w < distance[edge.v]) {
             cout<<"Negative weight cycle detected"<<endl;
             return;

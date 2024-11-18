@@ -1,17 +1,27 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-int main(){
-    int j;
-    string str; cin>>str;
-    string tar; cin>>tar;
-    
-    for(int i=0;i<=str.size()-tar.size();i++){
-        for(j=0;j<tar.size();j++){
-            if(str[i+j] != tar[j]) {
+int main() {
+    string str1, str2; cin >> str1 >> str2;
+
+    int n = str1.length();
+    int m = str2.length();
+
+    bool find = false;
+    for(int i=0; i<=n - m; i++) {
+        int j;
+        for(j=0; j<m; j++) {
+            if(str1[i+j] != str2[j]){
                 break;
             }
         }
-        if(j == tar.size())
-            cout<<i<<endl;
+        if(j == m) {
+            find = true;
+            cout << i << " ";
+        }
     }
+    if(!find){
+        cout << "no pattern";
+        return 0;
+    }
+    
 }

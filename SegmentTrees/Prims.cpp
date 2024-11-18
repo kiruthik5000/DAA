@@ -23,8 +23,8 @@ int getShortestDistance(vector<vector<int>> &adj) {
     for (int i = 0; i < n; i++) {
         int vertex = getNextVertex(dist, inMST);
         inMST[vertex] = true;
-
-        for (int j = 0; j < adj[vertex].size(); j++) {
+        cout <<  adj[vertex].size();
+        for (int j = 0; j < n; j++) {
             if (!inMST[j] && adj[vertex][j] != -1) {
                 dist[j] = min(dist[j], adj[vertex][j]);
             }
@@ -33,7 +33,11 @@ int getShortestDistance(vector<vector<int>> &adj) {
 
     int sum = 0;
     for (int i = 0; i < n; i++) {
+        if(dist[i] != INT_MAX) {
         sum += dist[i];
+        }else{
+            cout << "Cannot connect";
+        }
     }
     return sum;
 }

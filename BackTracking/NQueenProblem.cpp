@@ -1,45 +1,64 @@
-#include <bits/stdc++.h>
+#include<iostream>
 using namespace std;
-
-void printBoard(vector<vector<char>>& board, int n){
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++)
-            cout << board[i][j] << " ";
+void display(int **mat,int num){
+    for(int i=0;i<num;i++){
+        for(int j=0;j<num;j++){
+            if(mat[i][j]==1){
+                cout<<"Q ";
+            }
+            else if(mat[i][j]==0){
+                cout<<". ";
+            }
+        }
         cout<<endl;
     }
+    cout<<endl;
 }
-bool isSafe(vector<vector<char>>& board,int row, int col, int n){
-    for(int i=0;i<col;i++)
-        if(board[row][i] == 'Q')
-        return false;
-    for(int i=row, j=col; i>=0 && j>=0; i--,j--)
-        if(board[i][j] == 'Q')
-        return false;
-    for(int i=row, j=col; i<n && j>=0; i++,j--)
-        if(board[i][j] == 'Q')
-        return false;
+
+bool check(int **mat,int row,int col,int num){
+    int i,j;
+    for(i=row;i>=0;i--)
+        if(mat[i][col]==1) return false;
+    for(i=row,j=col;i>=0&&j>=0;i--,j--)
+        if(mat[i][j]==1) return false;
+    for(i=row,j=col;i>=0&&j<num;i--,j++)
+        if(mat[i][j]==1) return false;
     return true;
 }
-void PlaceQueen(vector<vector<char>>& board,int col, int n, int& cnt){
-    if(col >= n){
-        printBoard(board, n);
-        cout << endl;
-        cnt++;
-        return ;
+
+void nqueen(int **mat,int num,int row){
+    int col;
+    if(row==num){
+        display(mat,num);
+        return;
     }
-    for(int i=0;i<n;i++){  // rows
-        if(isSafe(board, i, col, n)){
-            board[i][col] = 'Q';
-        PlaceQueen(board, col+1, n, cnt);
-            board[i][col] = '-';
+    else{
+        for(col=0;col<num;col++){
+            if(check(mat,row,col,num)){
+                mat[row][col]=1;
+                nqueen(mat,num,row+1);
+                mat[row][col]=0;
+            }
         }
     }
 }
 int main(){
-    int n; cin >> n;
-    vector<vector<char>> board(n, vector<char> (n, '-'));
-    int cnt = 0;
-    PlaceQueen(board, 0, n, cnt);
-    cout << "Total: "<<cnt;
+    int num;
+    if(!(cin>>num)){
+        cout<<"Invalid input";
+        return 0;
+    }
+    if(num>=9){
+        cout<<"Invalid input";
+        return 0;
+    }
+    if(num==2||num==3){
+        cout<<"No solution exists";
+        return 0;
+    }
+    int **mat =new int*[num];
+    for(int ind=0;ind<num;ind++)
+    mat[ind]=new int[num];
+    nqueen(mat,num,0);
+    return 0;
 }
-
