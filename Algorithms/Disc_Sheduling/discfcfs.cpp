@@ -12,8 +12,8 @@ void fcfs(vector<int>&request, int n, int inital){
 
 int main() {
     int n = 5;
-    vector<int>request = {99,10,120,100,60};
-    int intial = 50;
+    vector<int>request = {98, 183, 37, 122, 14, 124, 65, 67};
+    int intial = 53;
 
     fcfs(request, n, intial);
 }
